@@ -20,11 +20,11 @@ class Model
         ]));
     }
 
-    public function checkUser(string $login, string $password)
+    public function checkUser($login, $password) 
     {
         return $this->runner->runSQL(
             <<<SQL
-SELECT `group`. `kod` 
+SELECT `group`. `kod`, `user` . `username` 
 FROM `group`,`user` 
 WHERE `group`.`id` = `user`.`group_id` AND `username` = '$login' AND `password` = '$password'
 SQL
