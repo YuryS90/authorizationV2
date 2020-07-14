@@ -8,6 +8,10 @@ $model = new Model();
 
 $res = $model->checkUser($_POST['username'], $_POST['password']);
 
+$count = $model->registeredUsers();
+
+
+
 ?>
 <!doctype html>
 <html lang="ru">
@@ -51,9 +55,15 @@ $res = $model->checkUser($_POST['username'], $_POST['password']);
 
     if (!empty($_POST)) {
         if (!empty($res)) {
-            echo "Имя пользователя: " . $res[0]['username'] . "\n" . "группа пользователей: " . $res[0]['kod'];
+            echo "Всего зарегистрованных пользователей, включая админов:  $count" .
+            "<br>" .
+            "Имя пользователя: " . $res[0]['username']. 
+            "<br>" .
+            "Группа пользователей: " . $res[0]['kod'];
         } else {
-            echo "Такого пользователя не существует";
+            echo "Всего зарегистрованных пользователей, включая админов:  $count" .
+            "<br>" .
+            "Такого пользователя не существует";
         }
         //  else {
         //     echo "Введите пользователя!";
