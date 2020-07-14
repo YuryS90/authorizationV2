@@ -7,7 +7,7 @@ include "../vendor/autoload.php";
 $model = new Model();
 
 $res = $model->checkUser($_POST['username'], $_POST['password']);
-
+// print_r($res);
 $count = $model->registeredUsers();
 
 
@@ -57,9 +57,9 @@ $count = $model->registeredUsers();
         if (!empty($res)) {
             echo "Всего зарегистрованных пользователей, включая админов:  $count" .
             "<br>" .
-            "Имя пользователя: " . $res[0]['username']. 
+            "Имя пользователя: " . $res['username']. 
             "<br>" .
-            "Группа пользователей: " . $res[0]['kod'];
+            "Группа пользователей: " . $res['group_name'];
         } else {
             echo "Всего зарегистрованных пользователей, включая админов:  $count" .
             "<br>" .

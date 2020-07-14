@@ -27,11 +27,12 @@ class Model
     {
         return $this->runner->runSQL(
             <<<SQL
-SELECT `group`. `kod`, `user` . `username` 
+-- SELECT `group`. `kod`, `user` . `username`
+SELECT `group`. `kod`, `group`.  `name` as  `group_name` , `user` . `username`
 FROM `group`,`user` 
 WHERE `group`.`id` = `user`.`group_id` AND `username` = '$login' AND `password` = '$password'
 SQL
-        );
+        )[0];
     }
 
     /**
